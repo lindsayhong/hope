@@ -1,0 +1,6 @@
+<h1>Er Visit ID: <%= @intervention.id %></h1>
+<h3><%= @participant.first_name %></h3>
+<h3><%= @er_visit.er_icd9_code %></h3>
+<h3><%= @er_visit.er_icd9_detail %></h3>
+
+<%= link_to "Back to intervention", participant_intervention_path(@participant.id, @intervention.id) %>

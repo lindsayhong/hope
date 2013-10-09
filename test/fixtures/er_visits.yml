@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  intervention_id: 1
+  er_date: 2013-10-08
+  er_icd9_code: MyString
+  er_icd9_detail: MyString
+  er_cost: 1
+  er_notes: MyText
+
+two:
+  intervention_id: 1
+  er_date: 2013-10-08
+  er_icd9_code: MyString
+  er_icd9_detail: MyString
+  er_cost: 1
+  er_notes: MyText

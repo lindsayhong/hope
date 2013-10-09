@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  group: MyString
+  intervention_start_date: 2013-10-06
+  intervention_end_date: 2013-10-06
+  outcome: MyString
+  nurse: MyString
+  previous_hospitalizations: 1
+  participant_id: 1
+
+two:
+  group: MyString
+  intervention_start_date: 2013-10-06
+  intervention_end_date: 2013-10-06
+  outcome: MyString
+  nurse: MyString
+  previous_hospitalizations: 1
+  participant_id: 1

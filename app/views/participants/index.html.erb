@@ -1,0 +1,19 @@
+<h1>Participants</h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Date of Birth</th>
+		<th>Medical Record Number</th>
+	</tr>
+
+	<% @participants.order("last_name").each do |participant| %>
+		<tr>
+			<td><%= link_to "#{participant.last_name}, #{participant.first_name}", participant_path(participant.id) %></td>
+			<td><%= link_to "#{participant.date_of_birth}", participant_path(participant.id) %></td>
+			<td><%= link_to "#{participant.medical_record_number}", participant_path(participant.id) %></td>
+		</tr>
+	<% end %>
+</table>
+
+<p><%= link_to "+ Add new participant", new_participant_path %></p>

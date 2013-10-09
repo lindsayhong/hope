@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  admission_date: 2013-10-06
+  discharge_date: 2013-10-06
+  icd9_code: MyString
+  icd9_detail: MyText
+  cost: 9.99
+
+two:
+  admission_date: 2013-10-06
+  discharge_date: 2013-10-06
+  icd9_code: MyString
+  icd9_detail: MyText
+  cost: 9.99

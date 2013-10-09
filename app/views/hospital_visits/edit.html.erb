@@ -1,0 +1,34 @@
+<h1>Update Hospital Visit</h1>
+
+<br>
+
+<%= form_for [@intervention, @hospital_visit] do |form| %>
+  <p>
+    <%= form.label :admission_date, "Admission date:" %>
+    <%= form.date_field :admission_date %>
+  </p>
+  
+  <p>
+    <%= form.label :discharge_date, "Discharge date:" %>
+    <%= form.date_field :discharge_date %>
+  </p>
+
+  <p>  
+    <%= form.label :icd9_code, "ICD 9 Code:" %>
+    <%= form.text_field :icd9_code %>
+  </p>  
+  
+  <p>
+    <%= form.label :icd9_detail, "ICD 9 detail:" %>
+    <%= form.text_field :icd9_detail %>
+  </p>
+
+  <p>
+    <%= form.label :cost, "Cost: $" %>
+    <%= form.text_field :cost %>
+  </p>
+
+  <p><%= form.submit "Update" %></p>
+<% end %>
+
+<p><%= link_to "Cancel", participant_intervention_path(@intervention.participant_id, @intervention) %>

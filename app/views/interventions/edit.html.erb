@@ -1,0 +1,36 @@
+<h1>Edit Intervention ID <%= @intervention.id %></h1>
+
+<%= form_for [@participant, @intervention] do |form| %>
+  <p>
+    <%= form.label :group, "Intervention program:" %>
+    <%= form.select(:group, options_for_select(@group_options)) %>
+  </p>
+  
+  <p>
+    <%= form.label :nurse, "Assigned nurse:" %>
+    <%= form.select(:nurse, options_for_select(@nurse_options)) %>
+  </p>
+
+  <p>  
+    <%= form.label :intervention_start_date, "Intervention start date:" %>
+    <%= form.date_field :intervention_start_date %>
+  </p>  
+  
+  <p>
+    <%= form.label :intervention_end_date, "Intervention end date:" %>
+    <%= form.date_field :intervention_end_date %>
+  </p>
+
+  <p>
+    <%= form.label :previous_hospitalizations, "Number of hospitalizations in the previous year:" %>
+    <%= form.text_field :previous_hospitalizations %>
+  </p>
+
+  <p>
+    <%= form.label :outcome, "Number of hospitalizations in the previous year:" %>
+  	<%= form.select(:outcome, options_for_select(@outcome_options)) %>  
+  </p>
+
+  <p><%= form.submit "Update" %></p>
+
+<% end %>

@@ -1,0 +1,7 @@
+<h1>All Interventions</h1>
+
+<% @interventions.each do |intervention| %>
+	<ul>
+		<li><%= link_to "#{intervention.id} - #{intervention.participant_id}", edit_participant_intervention_path(intervention.participant_id, intervention.id) %></li>
+	</ul>
+<% end %>
