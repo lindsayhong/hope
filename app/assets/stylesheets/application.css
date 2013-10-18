@@ -12,16 +12,87 @@
  *= require_tree .
  */
 
+a:link {
+	color: gray;
+	text-decoration: none;
+}
 
-table, th, td {
+a:hover {
+	text-decoration: underline;
+}
+
+a:visited {
+	color: gray;
+	text-decoration: none;
+}
+
+#container {
+  position: relative;
+  width: 1100px;
+  background-color: white;
+  margin: auto;
+}
+
+
+body {
+	background-color: #F4EBCE;
+	font-family: cambria;
+}
+
+
+h1, h2, h3, h4, h5 {
+	font-family: Roboto, sans-serif;
+}
+
+div.one {
+	background-color: #C8C38B; /* Foxy Love */
+	border: 1px solid black;
+	padding: 0px 20px 0px 20px;
+	width: 1060px;
+}
+
+div.two {
+	position: relative;
+	background-color: #BAE4F0; /* FSoft blue and green */
+	border: 1px solid black;
+	padding: 0px 20px 0px 20px;
+	width: 1060px;
+}
+
+div.table {
+	background-color: white; /* Foxy Love */
+	padding: 0px 20px 0px 20px;
+	width: 1060px;
+	margin: auto;
+}
+
+table {
 	border: 1px solid black;
 	text-align: center;
+	background-color: gray;
+}
+
+th.hosp {
+	background-color: #BC4D2F;
+	color: white;
+	padding: 5px;
+}
+
+th.er {
+	background-color: #D6754A;
+	color: white;
+	padding: 5px;
+}
+
+td {
+	background-color: white;
+}
+
+td.string {
+	text-align: left;
 }
 
 table {
 	width: 1000px;
-}
-
-th {
-	background: gray;
+	padding: 1px;
 }

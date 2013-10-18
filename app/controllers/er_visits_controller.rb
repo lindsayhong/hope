@@ -1,5 +1,7 @@
 class ErVisitsController < ApplicationController
-  before_filter :find_intervention, only: [:new, :create, :show]
+  before_filter :authenticate_user!
+  before_filter :find_intervention, only: [:new, :create, :edit, :update, :show]
+  
   def index
   end
 
@@ -7,11 +9,9 @@ class ErVisitsController < ApplicationController
     @er_visit = ErVisit.find(params[:id])
     @participant = Participant.find(@intervention.participant_id)
   end
-
   
   def new
     @er_visit = ErVisit.new
-
   end
 
   def create
@@ -25,6 +25,13 @@ class ErVisitsController < ApplicationController
   end
 
   def edit
+    @er_visit = ErVisit.find(params[:id])
+  end
+
+  def update
+    @er_visit = ErVisit.find(params[:id])
+    @er_visit.update_attributes(params.require(:er_visit).permit(:er_date, :er_icd9_code, :er_icd9_detail, :er_cost, :er_notes))
+    redirect_to participant_intervention_path(@intervention.participant_id, @intervention)
   end
 
   private

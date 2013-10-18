@@ -1,5 +1,9 @@
 HopeHawaiiData::Application.routes.draw do
 
+  get "recruitments/new"
+  get "recruitments/edit"
+  get "recruitments/index"
+  get "recruitments/show"
   # get "er_visits/index"
   # get "er_visits/show"
   # get "er_visits/new"
@@ -18,9 +22,16 @@ HopeHawaiiData::Application.routes.draw do
   # get "participants/edit"
   
   devise_for :users
-  root :to => "participants#index"
+  root :to => "interventions#summary"
 
-  resources :participants do
+  get "interventions/summary"
+
+  resources :recruits do
+    resources :recruitments
+    resources :interventions
+  end
+
+  resources :recruitments do
     resources :interventions
   end
 

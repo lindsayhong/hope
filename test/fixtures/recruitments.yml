@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  recruit_id: 1
+  review_date: 2013-10-12
+  account_number: MyString
+  admission_date: 2013-10-12
+  past_er_visits: 1
+  past_hosp_visits: 1
+  reason_admitted: MyText
+  age: 
+  eject_frac: 1
+  serum_albumin: 9.99
+
+two:
+  recruit_id: 1
+  review_date: 2013-10-12
+  account_number: MyString
+  admission_date: 2013-10-12
+  past_er_visits: 1
+  past_hosp_visits: 1
+  reason_admitted: MyText
+  age: 
+  eject_frac: 1
+  serum_albumin: 9.99

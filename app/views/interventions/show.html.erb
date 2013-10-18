@@ -1,72 +1,93 @@
-<p><%= link_to "Home", participants_path %></p>
+<div id="container">
+	<h5><%= link_to "Home", participants_path %></h5>
 
-<h3><%= "Intervention ID: #{@intervention.id}" %></h3>
+	<div class="one">
+	<h3><%= "Intervention ID: #{@intervention.id}" %></h3>
 
-<h2>Participant: <%= link_to "#{@participant.last_name}, #{@participant.first_name}", participant_path(@participant.id) %></h2>
+	<h2>Participant: <%= link_to "#{@participant.last_name}, #{@participant.first_name}", participant_path(@participant.id) %></h2>
 
-<h3>MRN: <%= link_to "#{@participant.medical_record_number}", participant_path(@participant) %></h3>
-
-
-<h4>Program: <%= @intervention.group %></h4>
-<h4>Nurse: <%= @intervention.nurse %></h4>
-<h4>Intervention Start Date: <%= @intervention.intervention_start_date %></h4>
-<h4>Intervention End Date: <%= @intervention.intervention_end_date %></h4>
-
-<br>
-
-<table>
-	<tr>Hospital Visits</tr>
-	<tr>
-		<th>#</th>
-		<th>Admission Date</th>
-		<th>Discharge Date</th>
-		<th>ICD 9 Code</th>
-		<th>ICD 9 Detail</th>
-		<th>Cost</th>
-		<th>Edit</th>
-	<tr>
-<% @hospital_visits.order("admission_date").each do |hospital_visit| %>
-	<% count = 1 %>
-	<tr>
-		<td><%= count %></td>
-			<% count += 1%>
-		<td><%= link_to hospital_visit[:admission_date], intervention_hospital_visit_path(hospital_visit.intervention.id, hospital_visit.id) %></td>
-		<td><%= hospital_visit[:discharge_date] %></td>
-		<td><%= hospital_visit[:icd9_code] %></td>
-		<td><%= hospital_visit[:icd9_detail] %></td>
-		<td><%= hospital_visit[:cost] %></td>
-		<td><%= link_to "Update", edit_intervention_hospital_visit_path(@intervention.id, hospital_visit.id) %></td>
-	</tr>
-<% end %>
-</table>
-
-<p><%= link_to "+ Add hospital visit", new_intervention_hospital_visit_path(@intervention.id) %></p>
-
-<br>
-<table>
-	<tr>ER Visits</tr>
-	<tr>
-		<th>ER Visit Date</th>
-		<th>ICD 9 Code</th>
-		<th>ICD 9 Detail</th>
-		<th>Cost</th>
-		<th>Notes</th>
-	<tr>
-<% @er_visits.each do |er_visit| %>
-	<tr>
-		<td><%= link_to er_visit[:er_date], intervention_er_visit_path(er_visit.intervention.id, er_visit.id) %></td>
-		<td><%= er_visit[:er_icd9_code] %></td>
-		<td><%= er_visit[:er_icd9_detail] %></td>
-		<td><%= er_visit[:er_cost] %></td>
-		<td><%= er_visit[:er_notes] %></td>
-	</tr>
-<% end %>
-</table>
+	<h3>MRN: <%= link_to "#{@participant.medical_record_number}", participant_path(@participant) %></h3>
 
 
-<p><%= link_to "+ Add emergency room (ER) visit", new_intervention_er_visit_path(@intervention.id) %></p>
+	<h4>Program: <%= @intervention.group %></h4>
+	<h4>Nurse: <%= @intervention.nurse %></h4>
+	</div>
 
-<br>
-<br>
+	<div class="two">
+		<h4>Intervention Start Date: <%= @intervention.intervention_start_date %></h4>
+		<h4>Intervention End Date: <%= @intervention.intervention_end_date %></h4>
+	</div>
+	
+	<br>
 
-<h5><%= link_to "<< Back to #{@participant.first_name}'s profile", participant_path(@participant.id) %></h5>
+	<div class="table">
+		<table>
+			<tr>
+				<th colspan="7">Hospital Visits</th>
+			</tr>
+			
+			<tr>
+				<th class="hosp">#</th>
+				<th class="hosp">Admission Date</th>
+				<th class="hosp">Discharge Date</th>
+				<th class="hosp">ICD 9 Code</th>
+				<th class="hosp">ICD 9 Detail</th>
+				<th class="hosp">Cost</th>
+				<th class="hosp">Edit</th>
+			<tr>
+
+			<% count = 1 %>
+
+			<% @hospital_visits.order("admission_date").each do |hospital_visit| %>
+				<tr>
+					<td><%= link_to "H#{count}", intervention_hospital_visit_path(@intervention, hospital_visit) %></td>
+					
+					<% count += 1 %>
+					
+					<td><%= link_to hospital_visit[:admission_date], intervention_hospital_visit_path(@intervention, hospital_visit) %></td>
+					<td><%= hospital_visit[:discharge_date] %></td>
+					<td><%= hospital_visit[:icd9_code] %></td>
+					<td><%= hospital_visit[:icd9_detail] %></td>
+					<td><%= hospital_visit[:cost] %></td>
+					<td><%= link_to "Update", edit_intervention_hospital_visit_path(@intervention, hospital_visit) %></td>
+				</tr>
+			<% end %>
+		</table>
+
+		<p><%= link_to "+ Add hospital visit", new_intervention_hospital_visit_path(@intervention) %></p>
+
+		<br>
+
+		<table>
+			<tr>ER Visits</tr>
+			<tr>
+				<th class="er">#</th>
+				<th class="er">ER Visit Date</th>
+				<th class="er">ICD 9 Code</th>
+				<th class="er">ICD 9 Detail</th>
+				<th class="er">Cost</th>
+				<th class="er">Notes</th>
+				<th class="er">Edit</th>
+			<tr>
+		<% count = 1 %>
+		<% @er_visits.order("er_date").each do |er_visit| %>
+			<tr>
+				<td><%= "ER#{count}" %></td>
+				<% count += 1 %>
+				<td><%= link_to er_visit[:er_date], intervention_er_visit_path(@intervention, er_visit) %></td>
+				<td><%= er_visit[:er_icd9_code] %></td>
+				<td><%= er_visit[:er_icd9_detail] %></td>
+				<td><%= er_visit[:er_cost] %></td>
+				<td><%= er_visit[:er_notes] %></td>
+				<td><%= link_to "Update", edit_intervention_er_visit_path(@intervention, er_visit) %></td>
+			</tr>
+		<% end %>
+		</table>
+
+		<p><%= link_to "+ Add emergency room (ER) visit", new_intervention_er_visit_path(@intervention) %></p>
+	</div>
+	<br>
+	<br>
+
+	<h5><%= link_to "<< Back to #{@participant.first_name}'s profile", participant_path(@participant) %></h5>
+</div>

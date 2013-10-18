@@ -1,0 +1,33 @@
+<div id="container">
+	
+	<div class="one">
+	<h1>Recruits</h1>
+	</div>
+
+	<div class="table">
+		<br>
+		<p><%= link_to "+ Add new recruit", new_recruit_path %></p>
+		<br>
+		<table>
+			<tr>
+				<th>Last Name</th>
+				<th>First Name</th>
+				<th>Date of Birth</th>
+				<th>Medical Record Number</th>
+			</tr>
+
+			<% @recruits.order("last_name").each do |recruit| %>
+				<tr>
+					<td class="string"><%= link_to recruit.last_name, recruit_path(recruit.id) %></td>
+					<td class="string"><%= link_to recruit.first_name, recruit_path(recruit.id) %></td>
+					<td><%= link_to "#{recruit.date_of_birth}", recruit_path(recruit.id) %></td>
+					<td><%= link_to "#{recruit.medical_record_number}", recruit_path(recruit.id) %></td>
+				</tr>
+			<% end %>
+		</table>
+
+		<br>
+
+		<br>
+	</div>
+</div>

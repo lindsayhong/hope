@@ -1,0 +1,38 @@
+<div id="container">
+
+	<p><%= link_to "Home", recruits_path %></p>
+
+  <div class="one">
+		<h1>New recruitment for <%= @recruit.first_name %></h1>
+  </div>
+
+  <div class="two">
+
+  	<%= form_for [@recruit, @recruitment] do |form| %>
+      <p>
+        <%= form.label :review_date, "Review date:" %>
+        <%= form.date_field :review_date %>
+      </p>
+
+      <p>
+        <%= form.label :account_number, "Account Number:" %>
+        <%= form.text_field :account_number %>
+      </p>  
+
+      <p>
+        <%= form.label :admission_date, "Admission date:" %>
+        <%= form.date_field :admission_date %>
+      </p>
+
+      <p>  
+        <%= form.label :past_er_visits, "Number of ER visits in the past 6 months:" %>
+        <%= form.text_field :past_er_visits %>
+      </p>  
+      
+
+
+      <p><%= form.submit "Submit" %></p>
+    <% end %>
+
+  </div>
+</div>
