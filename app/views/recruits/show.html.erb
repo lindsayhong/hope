@@ -20,6 +20,27 @@
 
 	<div class="two">
 		<h3><%= link_to "+ Add recruitment", new_recruit_recruitment_path(params[:id]) %></h3>
+
+		<table>
+			<tr>
+				<th>Number</th>
+				<th>Date</th>
+				<th>Account Number</th>
+			</tr>
+			<% count = 1 %>
+			<% if @recruitments.count > 0%>
+				<% @recruitments.each do |recruitment| %>
+					<tr>
+						<td><%= link_to count, recruit_recruitment_path(@recruit, recruitment.id) %></td>
+						<td><%= link_to recruitment.admission_date, recruit_recruitment_path(@recruit, recruitment.id) %></td>
+						<td><%= link_to recruitment.account_number, recruit_recruitment_path(@recruit, recruitment.id) %></td>
+					</tr>
+					<% count += 1%>
+				<% end %>
+
+			<% end %>
+		</table>
+
 		<% if @interventions.count > 0 %>
 			<table>
 				<tr>

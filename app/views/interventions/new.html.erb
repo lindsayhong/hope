@@ -1,7 +1,7 @@
 <h1>Interventions</h1>
 <br>
 
-<%= form_for [@participant, @intervention] do |form| %>
+<%= form_for [@recruit, @intervention] do |form| %>
   <p>
     <%= form.label :group, "Intervention program:" %>
     <%= form.select(:group, options_for_select(@group_options), {:prompt => "Select intervention program"}) %>

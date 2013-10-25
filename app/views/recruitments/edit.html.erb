@@ -1,2 +1,56 @@
-<h1>Recruitments#edit</h1>
-<p>Find me in app/views/recruitments/edit.html.erb</p>
+<div id="container">
+	<p><%= link_to "Home", recruits_path %></p>
+
+  <div class="one">
+		<h1>Edit recruitment for <%= @recruit.first_name %></h1>
+  </div>
+
+  <div class="two">
+  	<%= form_for [@recruit, @recruitment] do |form| %>
+
+      <p>
+        <%= form.label :review_date, "Review date:" %>
+        <%= form.date_field :review_date %>
+      </p>
+
+      <p>
+        <%= form.label :account_number, "Account Number:" %>
+        <%= form.text_field :account_number %>
+      </p>  
+
+      <p>
+        <%= form.label :admission_date, "Admission date:" %>
+        <%= form.date_field :admission_date %>
+      </p>
+
+      <h3><u>Predisposing risk factors</u></h3>
+
+      <p>  
+        <%= form.label :past_er_visits, "Number of ER visits in the past 6 months (since #{@recruitment.admission_date.months_ago(6)}):" %>
+        <%= form.text_field :past_er_visits %>
+      </p>  
+
+      <p>  
+        <%= form.label :past_hosp_visits, "Number of hospitalizations (DIS IN) visits in the past 365 days (since #{@recruitment.admission_date.years_ago(1)}):" %>
+        <%= form.text_field :past_hosp_visits %>
+      </p>  
+
+      <p>  
+        <%= form.label :reason_admitted, "Reason admitted:" %>
+        <%= form.text_field :reason_admitted %>
+      </p>  
+
+      <p>  
+        <%= form.label :eject_frac, "Ejection fraction:" %>
+        <%= form.text_field :eject_frac %>
+      </p>  
+      
+      <p>  
+        <%= form.label :serum_albumin, "Serum albumin:" %>
+        <%= form.text_field :serum_albumin %>
+      </p>  
+      
+      <p><%= form.submit "Update" %></p>
+    <% end %>
+  </div>
+</div>

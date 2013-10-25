@@ -3,12 +3,40 @@
 	<p><%= link_to "Home", recruits_path %></p>
 
   <div class="one">
-  	<h1>Recruitment</h1>
+  	<h1>Recruitment for <%= @recruit.first_name %></h1>
+
+  	<table class="recruitment">
+  		<tr>
+  			<td>Review Date</td>
+  			<td><%= @recruitment.review_date %></td>
+  		</tr>
+
+  		<tr>
+        <td>Account Number</td>
+        <td><%= @recruitment.account_number %></td>
+  		</tr>
+
+  		<tr>
+        <td>Admission Date</td>
+        <td><%= @recruitment.admission_date %></td>
+  		</tr>
+
+  		<tr>
+        <td>Review Date</td>
+        <td><%= @recruitment.review_date %></td>
+  		</tr>
+
+  		<tr>
+  		</tr>
+
+  		<tr>
+  		</tr>
+  	</table>
+
+  	<h5><%= link_to "Edit", edit_recruit_recruitment_path(@recruit, @recruitment), class: "edit" %></h5>
   </div>
 
-  <br>
-
   <div class="two">
-  	<p><%= link_to "Add to intervention", new_recruitment_intervention_path(@recruitment) %></p>
+  	<p><%= link_to "+ Add to intervention", new_recruitment_intervention_path(@recruitment) %></p>
   </div>
 </div>

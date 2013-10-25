@@ -1,9 +1,9 @@
 HopeHawaiiData::Application.routes.draw do
 
-  get "recruitments/new"
-  get "recruitments/edit"
-  get "recruitments/index"
-  get "recruitments/show"
+  # get "recruitments/new"
+  # get "recruitments/edit"
+  # get "recruitments/index"
+  # get "recruitments/show"
   # get "er_visits/index"
   # get "er_visits/show"
   # get "er_visits/new"

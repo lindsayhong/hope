@@ -22,6 +22,7 @@ class RecruitsController < ApplicationController
   end
 
   def show
+    @recruitments = Recruitment.where(recruit_id: @recruit.id)
     @interventions = Intervention.where(recruit_id: @recruit.id)
     @current_date = Date.today
     @hospital_visits = HospitalVisit.all

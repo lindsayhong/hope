@@ -21,7 +21,7 @@ class InterventionsController < ApplicationController
   end
 
   def create
-    @intervention = @recruit.interventions.build(params.require(:intervention).permit(:group, :nurse, :intervention_start_date, :intervention_end_date, :previous_hospitalizations, :outcome, :recruit_id))
+    @intervention = @recruit.interventions.build(params.require(:intervention).permit(:group, :nurse, :intervention_start_date, :intervention_end_date, :previous_hospitalizations, :outcome))
     
     if @intervention.save
       redirect_to recruit_intervention_path(@recruit, @intervention)
@@ -29,7 +29,6 @@ class InterventionsController < ApplicationController
       render action: new
     end
   end
-
 
   def show
     @hospital_visits = HospitalVisit.where(intervention_id: @intervention.id)
@@ -41,18 +40,18 @@ class InterventionsController < ApplicationController
 
   def update
     @intervention = Intervention.find(params[:id])
-  	@intervention.update_attributes(params.require(:intervention).permit(:group, :nurse, :intervention_start_date, :intervention_end_date, :previous_hospitalizations, :outcome, :recruit_id))
+  	@intervention.update_attributes(params.require(:intervention).permit(:group, :nurse, :intervention_start_date, :intervention_end_date, :previous_hospitalizations, :outcome))
     redirect_to recruit_intervention_path
   end
 
   private
 
   def find_recruit
-    @recruit = Recruit.find(params[:recruit_id])
+    @recruit = Recruitment.find(params[:recruitment_id]).recruit_id
   end
-  
+
   def find_intervention
-  	@intervention = Intervention.find(params[:id])
+    @intervention = Intervention.find(params[:id])
   end
 
   def form_options

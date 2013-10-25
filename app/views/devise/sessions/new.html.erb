@@ -1,17 +1,37 @@
-<h2>Sign in</h2>
+<div id="container">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+	<div class="one">
+		<h2>H.O.P.E. Hawaii</h2>
+	</div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+	<div class="signin">
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		  <div>
+		  	<%= f.label :email %><br />
+		  	<%= f.email_field :email, :autofocus => true %>
+		  </div>
+		  
+		  <br>
+		  
+		  <div>
+		  	<%= f.label :password %><br />
+		  	<%= f.password_field :password %>
+		  </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+		  <% if devise_mapping.rememberable? -%>
+		    <div>
+		    	<%= f.check_box :remember_me %>
+		    	<%= f.label :remember_me%>
+		    </div>
+		  <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+		  <br>
 
-<%= render "devise/shared/links" %>
+		  <div><%= f.submit "Sign in" %></div>
+		<% end %>
+
+		<br>
+
+		<%= render "devise/shared/links" %>
+	</div>
+</div>
