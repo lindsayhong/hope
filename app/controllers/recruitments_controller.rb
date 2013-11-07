@@ -13,7 +13,7 @@ class RecruitmentsController < ApplicationController
   end
 
   def create
-    @recruitment = @recruit.recruitments.build(params.require(:recruitment).permit(:recruit_id, :review_date, :account_number, :admission_date, :past_er_visits, :past_hosp_visits, :reason_admitted, :age, :eject_frac, :serum_albumin))
+    @recruitment = @recruit.recruitments.build(params.require(:recruitment).permit(:recruit_id, :review_date, :account_number, :admission_date, :past_er_visits, :past_hosp_visits, :reason_admitted, :age, :eject_frac, :serum_albumin, :group))
     
     if @recruitment.save
       redirect_to recruit_recruitment_path(@recruit.id, @recruitment)
@@ -24,13 +24,14 @@ class RecruitmentsController < ApplicationController
 
 
   def show
+    @intervention = Intervention.where(recruitment_id: @recruitment_id).first
   end
 
   def edit
   end
 
   def update
-  	@recruitment.update_attributes(params.require(:recruitment).permit(:recruit_id, :review_date, :account_number, :admission_date, :past_er_visits, :past_hosp_visits, :reason_admitted, :age, :eject_frac, :serum_albumin))
+  	@recruitment.update_attributes(params.require(:recruitment).permit(:recruit_id, :review_date, :account_number, :admission_date, :past_er_visits, :past_hosp_visits, :reason_admitted, :age, :eject_frac, :serum_albumin, :group))
     redirect_to recruit_recruitment_path
   end
 

@@ -9,6 +9,11 @@
   	<%= form_for [@recruit, @recruitment] do |form| %>
 
       <p>
+        <%= form.label :group, "Program:" %>
+        <%= form.select(:group, options_for_select(@group_options)) %>
+      </p>
+
+      <p>
         <%= form.label :review_date, "Review date:" %>
         <%= form.date_field :review_date %>
       </p>
@@ -26,18 +31,18 @@
       <h3><u>Predisposing risk factors</u></h3>
 
       <p>  
-        <%= form.label :past_er_visits, "Number of ER visits in the past 6 months (since #{@recruitment.admission_date.months_ago(6)}):" %>
+        <%= form.label :past_er_visits, "Number of ER visits (DEP ER) in the past 6 months:" %>
         <%= form.text_field :past_er_visits %>
       </p>  
 
       <p>  
-        <%= form.label :past_hosp_visits, "Number of hospitalizations (DIS IN) visits in the past 365 days (since #{@recruitment.admission_date.years_ago(1)}):" %>
+        <%= form.label :past_hosp_visits, "Number of hospitalizations (DIS IN) visits in the past 365 days:" %>
         <%= form.text_field :past_hosp_visits %>
       </p>  
 
       <p>  
         <%= form.label :reason_admitted, "Reason admitted:" %>
-        <%= form.text_field :reason_admitted %>
+        <%= form.text_area :reason_admitted %>
       </p>  
 
       <p>  

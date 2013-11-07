@@ -41,6 +41,11 @@
 			<% end %>
 		</table>
 
+		<br>
+		<br>
+
+		<h2>Interventions</h2>
+
 		<% if @interventions.count > 0 %>
 			<table>
 				<tr>
@@ -57,26 +62,21 @@
 
 				<% @interventions.each do |intervention| %>
 					<tr>
-						<td><%= link_to intervention.id, recruit_intervention_path(@recruit.id, intervention.id) %></td>
-						<td><%= intervention.group %></td>
+						<td><%= link_to intervention.id, recruitment_intervention_path(intervention.recruitment_id, intervention.id) %></td>
+						<td><%=  %></td>
 						<td><%= intervention.nurse %></td>
-						<td><%= intervention.intervention_start_date.strftime("%B %-d, %Y") %></td>
-						<td><%= intervention.intervention_end_date %></td>
+						<td><%#= intervention.intervention_start_date.try.strftime("%B %-d, %Y") %></td>
+						<td><%#= intervention.intervention_end_date %></td>
 						<td><%= link_to @hospital_visits.where(intervention_id: intervention.id).count, recruit_intervention_path(params[:id], intervention.id) %></td>
 						<td><%= link_to @er_visits.where(intervention_id: intervention.id).count, recruit_intervention_path(params[:id], intervention.id) %></td>
 						<td><%= intervention.outcome %></td>
-						<td><%= link_to "Update", edit_recruit_intervention_path(@recruit.id, intervention.id) %></td>
+						<td><%= link_to "Update", edit_recruitment_intervention_path(intervention.recruitment_id, intervention.id) %></td>
 					</tr>
 				<% end %>
-
 			</table>
 		<% else %>
 
 		<% end %>
-		<br>
-
-
-		<h3><%= link_to "Enroll in a new intervention", new_recruit_intervention_path(params[:id]) %></h3>
 
 		<br>
 

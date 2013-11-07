@@ -2,20 +2,19 @@
 	<h5><%= link_to "Home", recruits_path %></h5>
 
 	<div class="one">
-	<h3><%= "Intervention ID: #{@intervention.id}" %></h3>
+		<h3><%= "Intervention ID: #{@intervention.id}" %></h3>
 
-	<h2>recruit: <%= link_to "#{@recruit.last_name}, #{@recruit.first_name}", recruit_path(@recruit.id) %></h2>
+		<h2>Recruit: <%= link_to "#{@recruit.last_name}, #{@recruit.first_name} #{@recruit.middle_initial}", recruit_path(@recruit.id) %></h2>
 
-	<h3>MRN: <%= link_to "#{@recruit.medical_record_number}", recruit_path(@recruit) %></h3>
-
-
-	<h4>Program: <%= @intervention.group %></h4>
-	<h4>Nurse: <%= @intervention.nurse %></h4>
+		<h3>MRN: <%= link_to "#{@recruit.medical_record_number}", recruit_path(@recruit) %></h3>
+		<h4>Program: <%= @recruitment.group %></h4>
+		<h4>Nurse: <%= @intervention.nurse %></h4>
 	</div>
 
 	<div class="two">
 		<h4>Intervention Start Date: <%= @intervention.intervention_start_date %></h4>
-		<h4>Intervention End Date: <%= @intervention.intervention_end_date %> <%= link_to "Update", edit_recruit_intervention_path(@recruit.id, @intervention.id %></h4>
+		<h4>Intervention End Date: <%= @intervention.intervention_end_date %></h4>
+		<h4><%= link_to "Update", edit_recruitment_intervention_path(@recruitment, @intervention) %></h4>
 	</div>
 	
 	<br>
@@ -94,5 +93,5 @@
 	<br>
 	<br>
 
-	<h5><%= link_to "<< Back to #{@recruit.first_name}'s profile", recruit_path(@recruit) %></h5>
+	<h5><%= link_to "<< Back to #{@recruit.first_name}'s profile", recruit_path(@recruitment.recruit_id) %></h5>
 </div>

@@ -10,25 +10,7 @@
 	<div class="two">
 		<h3>Hilo 30-Day Intervention Summary</h3>
 
-		<% days = 0 %>
-		<% hospital_visits_array = [] %>
 
-		<% @hilo_30_interventions.each do |intervention| %>
-		<% days = days + (intervention.intervention_end_date - intervention.intervention_start_date).to_i %>
-
-		<% hospital_visits_array << @hospital_visits.where(intervention_id: intervention.id).count %>
-			
-		<ul>
-			<li><%= "Total hospital visits = #{@hospital_visits.where(intervention_id: intervention.id).count}" %></li>
-		</ul>
-		<% end %>
-
-		<h5><%= "Total hospital days: #{days}" %></h5>
-		<h5><%= "Total hospital visits: #{hospital_visits_array.inject(:+)}" %></h5>
-		<h5><%= "Total enrolled = #{@hilo_30_interventions.count}" %></h5>
-
-
-		<%= %>
 
 		<h3>Hilo 1-Year Intervention Summary</h3>
 

@@ -3,7 +3,7 @@
 	<p><%= link_to "Home", recruits_path %></p>
 
   <div class="one">
-  	<h1>Recruitment for <%= @recruit.first_name %></h1>
+  	<h1>Recruitment for <%= link_to @recruit.first_name, recruit_path(@recruitment.recruit_id) %></h1>
 
   	<table class="recruitment">
   		<tr>
@@ -22,14 +22,28 @@
   		</tr>
 
   		<tr>
-        <td>Review Date</td>
-        <td><%= @recruitment.review_date %></td>
+        <td>Number of ER Visits in the Past 6 Months</td>
+        <td><%= @recruitment.past_er_visits %></td>
   		</tr>
 
   		<tr>
+        <td>Number of Hospital Visits in the Past 365 Days</td>
+        <td><%= @recruitment.past_hosp_visits %></td>
   		</tr>
 
-  		<tr>
+      <tr>
+        <td>Reason Admitted</td>
+        <td><%= @recruitment.reason_admitted %></td>
+      </tr>
+
+      <tr>
+        <td>Ejection Fraction</td>
+        <td><%= @recruitment.eject_frac %></td>
+      </tr>
+    	
+      <tr>
+        <td>Serum Albumin at Time of Admission</td>
+        <td><%= @recruitment.serum_albumin %></td>
   		</tr>
   	</table>
 
@@ -37,6 +51,10 @@
   </div>
 
   <div class="two">
-  	<p><%= link_to "+ Add to intervention", new_recruitment_intervention_path(@recruitment) %></p>
+    <% if @intervention %>
+      <p>Intervention start date: <%= @intervention.intervention_start_date %></p>
+    <% else %>
+    	<p><%= link_to "+ Add to intervention", new_recruitment_intervention_path(@recruitment) %></p>  
+    <% end %>
   </div>
 </div>

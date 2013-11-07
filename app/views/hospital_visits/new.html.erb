@@ -20,7 +20,7 @@
   
   <p>
     <%= form.label :icd9_detail, "ICD 9 detail:" %>
-    <%= form.text_field :icd9_detail %>
+    <%= form.text_area :icd9_detail %>
   </p>
 
   <p>
@@ -31,4 +31,4 @@
   <p><%= form.submit "Submit" %></p>
 <% end %>
 
-<p><%= link_to "Cancel", participant_intervention_path(@intervention.participant_id, @intervention.id) %>
+<p><%= link_to "Cancel", recruitment_intervention_path(@intervention.recruitment_id, @intervention.id) %>

@@ -1,6 +1,6 @@
 class InterventionsController < ApplicationController
 	before_filter :authenticate_user!
-  before_filter :find_recruit, only: [:new, :create, :edit, :update, :show]
+  before_filter :find_recruitment, only: [:new, :create, :edit, :update, :show]
   before_filter :find_intervention, only: [:show, :edit, :update]
   before_filter :form_options, only: [:new, :edit]
   
@@ -9,11 +9,7 @@ class InterventionsController < ApplicationController
   end
 
   def summary
-    @hilo_30_interventions = Intervention.where(group: "Hilo 30-Day")
-    @hilo_1_year_interventions = Intervention.where(group: "Hilo 1-Year")
-    @hnl_1_year_interventions = Intervention.where(group: "Honolulu 1-Year")
-    @hospital_visits = HospitalVisit.all
-    @er_visits = ErVisit.all
+    
   end
 
   def new
@@ -21,33 +17,33 @@ class InterventionsController < ApplicationController
   end
 
   def create
-    @intervention = @recruit.interventions.build(params.require(:intervention).permit(:group, :nurse, :intervention_start_date, :intervention_end_date, :previous_hospitalizations, :outcome))
+    @intervention = @recruitment.interventions.build(params.require(:intervention).permit(:nurse, :intervention_start_date, :intervention_end_date, :outcome))
     
     if @intervention.save
-      redirect_to recruit_intervention_path(@recruit, @intervention)
+      redirect_to recruitment_intervention_path(@recruitment, @intervention)
     else
       render action: new
     end
   end
 
   def show
-    @hospital_visits = HospitalVisit.where(intervention_id: @intervention.id)
-    @er_visits = ErVisit.where(intervention_id: @intervention.id)
+    @recruit = Recruit.find(@recruitment.recruit_id)
+    @hospital_visits = HospitalVisit.where(intervention_id: @intervention)
+    @er_visits = ErVisit.where(intervention_id: @intervention)
   end
 
   def edit
   end
 
   def update
-    @intervention = Intervention.find(params[:id])
   	@intervention.update_attributes(params.require(:intervention).permit(:group, :nurse, :intervention_start_date, :intervention_end_date, :previous_hospitalizations, :outcome))
-    redirect_to recruit_intervention_path
+    redirect_to recruitment_intervention_path
   end
 
   private
 
-  def find_recruit
-    @recruit = Recruitment.find(params[:recruitment_id]).recruit_id
+  def find_recruitment
+    @recruitment = Recruitment.find(params[:recruitment_id])
   end
 
   def find_intervention
