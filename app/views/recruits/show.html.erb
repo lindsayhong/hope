@@ -1,5 +1,7 @@
 <div id="container">
-	<p><%= link_to "Home", recruits_path %></p>
+	<div class="nav">
+		<p><%= link_to "Home", recruits_path %></p>
+	</div>
 
 	<div class="one">
 		<h1>Patient Profile</h1>
@@ -19,16 +21,15 @@
 	</div>
 
 	<div class="two">
-		<h3><%= link_to "+ Add recruitment", new_recruit_recruitment_path(params[:id]) %></h3>
-
-		<table>
-			<tr>
-				<th>Number</th>
-				<th>Date</th>
-				<th>Account Number</th>
-			</tr>
-			<% count = 1 %>
-			<% if @recruitments.count > 0%>
+		<h2>Recruitments</h2>
+		<% if @recruitments.count > 0%>
+			<table>
+				<tr>
+					<th>Number</th>
+					<th>Date</th>
+					<th>Account Number</th>
+				</tr>
+				<% count = 1 %>
 				<% @recruitments.each do |recruitment| %>
 					<tr>
 						<td><%= link_to count, recruit_recruitment_path(@recruit, recruitment.id) %></td>
@@ -37,16 +38,16 @@
 					</tr>
 					<% count += 1%>
 				<% end %>
+			</table>
+		<% end %>
 
-			<% end %>
-		</table>
+		<h3><%= link_to "+ Add recruitment", new_recruit_recruitment_path(params[:id]) %></h3>
 
 		<br>
 		<br>
-
-		<h2>Interventions</h2>
 
 		<% if @interventions.count > 0 %>
+			<h2>Interventions</h2>
 			<table>
 				<tr>
 					<th class="column1">Intervention ID</th>

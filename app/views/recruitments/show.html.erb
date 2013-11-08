@@ -1,6 +1,7 @@
 <div id="container">
-
-	<p><%= link_to "Home", recruits_path %></p>
+  <div class="nav">
+    <p><%= link_to "Home", recruits_path %></p>
+  </div>
 
   <div class="one">
   	<h1>Recruitment for <%= link_to @recruit.first_name, recruit_path(@recruitment.recruit_id) %></h1>
@@ -59,7 +60,10 @@
     <% if @intervention %>
       <p>Intervention start date: <%= @intervention.intervention_start_date %></p>
     <% else %>
-    	<p><%= link_to "+ Add to intervention", new_recruitment_intervention_path(@recruitment) %></p>  
+    	<p><%= link_to "+ Add to intervention", new_recruitment_intervention_path(@recruitment) %></p>
     <% end %>
+    <br>
+
+    <p><%= link_to "<< Back to #{@recruit.first_name}'s Profile", recruit_path(@recruit) %></p>
   </div>
 </div>
