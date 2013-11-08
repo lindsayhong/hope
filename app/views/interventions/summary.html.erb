@@ -9,6 +9,13 @@
 
 	<div class="two">
 		<h3>Hilo 30-Day Intervention Summary</h3>
+			<% @hilo_30_recruitments.each do |hilo_30_recruitment| %>
+					<ul>
+						<li><%= Intervention.where(recruitment_id: hilo_30_recruitment.id).first %></li>
+					</ul>
+			
+
+			<% end %>
 
 
 

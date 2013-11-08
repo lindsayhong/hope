@@ -22,9 +22,8 @@ class RecruitmentsController < ApplicationController
     end
   end
 
-
   def show
-    @intervention = Intervention.where(recruitment_id: @recruitment_id).first
+    @intervention = Intervention.where(recruitment_id: @recruitment.id).first
   end
 
   def edit

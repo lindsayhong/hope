@@ -4,9 +4,9 @@
 	<div class="one">
 		<h1>Patient Profile</h1>
 
-		<h2><%= "#{@recruit.last_name}, #{@recruit.first_name} #{@recruit.middle_initial}" %></h2>
+		<h2><u>Name</u>: <%= "#{@recruit.last_name}, #{@recruit.first_name} #{@recruit.middle_initial}" %></h2>
 
-		<h3><%= "Date of birth: #{@recruit.date_of_birth.strftime("%B %-d, %Y")}" %></h3>
+		<h3><u>Date of birth</u>: <%= @recruit.date_of_birth.strftime("%B %-d, %Y") %></h3>
 
 		<h3 class="underline"><%= "Age as of today: #{current_age(@recruit.date_of_birth)}" %></h3>
 
@@ -63,10 +63,10 @@
 				<% @interventions.each do |intervention| %>
 					<tr>
 						<td><%= link_to intervention.id, recruitment_intervention_path(intervention.recruitment_id, intervention.id) %></td>
-						<td><%=  %></td>
+						<td><%= Recruitment.find(intervention.recruitment_id).group %></td>
 						<td><%= intervention.nurse %></td>
-						<td><%#= intervention.intervention_start_date.try.strftime("%B %-d, %Y") %></td>
-						<td><%#= intervention.intervention_end_date %></td>
+						<td><%= intervention.intervention_start_date %></td>
+						<td><%= intervention.intervention_end_date %></td>
 						<td><%= link_to @hospital_visits.where(intervention_id: intervention.id).count, recruit_intervention_path(params[:id], intervention.id) %></td>
 						<td><%= link_to @er_visits.where(intervention_id: intervention.id).count, recruit_intervention_path(params[:id], intervention.id) %></td>
 						<td><%= intervention.outcome %></td>

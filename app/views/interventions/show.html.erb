@@ -4,7 +4,7 @@
 	<div class="one">
 		<h3><%= "Intervention ID: #{@intervention.id}" %></h3>
 
-		<h2>Recruit: <%= link_to "#{@recruit.last_name}, #{@recruit.first_name} #{@recruit.middle_initial}", recruit_path(@recruit.id) %></h2>
+		<h2>Participant: <%= link_to "#{@recruit.last_name}, #{@recruit.first_name} #{@recruit.middle_initial}", recruit_path(@recruit.id) %></h2>
 
 		<h3>MRN: <%= link_to "#{@recruit.medical_record_number}", recruit_path(@recruit) %></h3>
 		<h4>Program: <%= @recruitment.group %></h4>

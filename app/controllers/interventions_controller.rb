@@ -9,7 +9,7 @@ class InterventionsController < ApplicationController
   end
 
   def summary
-    
+    @hilo_30_recruitments = Recruitment.where(group: "Hilo 30-Day")
   end
 
   def new

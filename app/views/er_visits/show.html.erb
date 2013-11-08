@@ -1,8 +1,8 @@
-<h1><%= "Intervention ID: #{@intervention.id}" %></h1>
-<h3><%= "ER Visit ID: #{@er_visit.intervention_id}" %></h3>
-<h3><%= "Participant name: #{@recruit.last_name}, #{@recruitment.first_name} #{@recruit.middle_initial}" %></h3>
-<h3><%= "ICD-9 Code: #{@er_visit.er_icd9_code}" %></h3>
-<h3><%= "ICD-9 detail: #{@er_visit.er_icd9_detail}" %></h3>
-<h3><%= "Cost: #{@er_visit.er_cost}" %></h3>
+<h1>Intervention ID: <%= @intervention.id %></h1>
+<h3>ER Visit ID: <%= @er_visit.intervention_id %></h3>
+<h3>Participant name: <%= "#{@recruit.last_name}, #{@recruit.first_name} #{@recruit.middle_initial}" %></h3>
+<h3>ICD-9 Code: <%= @er_visit.er_icd9_code %></h3>
+<h3>ICD-9 detail: <%= @er_visit.er_icd9_detail %></h3>
+<h3>Cost: <%= @er_visit.er_cost %></h3>
 
 <%= link_to "<< Back to intervention", recruitment_intervention_path(@recruitment, @intervention.id) %>
