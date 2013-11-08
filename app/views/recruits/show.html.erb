@@ -5,22 +5,24 @@
 
 	<div class="one">
 		<h1>Patient Profile</h1>
+	</div>
 
+	<div class="two">
 		<h2><u>Name</u>: <%= "#{@recruit.last_name}, #{@recruit.first_name} #{@recruit.middle_initial}" %></h2>
 
-		<h3><u>Date of birth</u>: <%= @recruit.date_of_birth.strftime("%B %-d, %Y") %></h3>
+		<h3><u>Date of birth</u>: <%= @recruit.date_of_birth.strftime("%B %-d, %Y") %></h3>		
+
+		<h3><u>Sex</u>: <%= @recruit.sex %></h3>
 
 		<h3 class="underline"><%= "Age as of today: #{current_age(@recruit.date_of_birth)}" %></h3>
 
 		<h3><u><%= "Medical Record Number"%></u><%= ": #{@recruit.medical_record_number}" %></h3>
 
-		<br>
-
 		<p><%= link_to "Edit profile", edit_recruit_path %></p>
 
 	</div>
 
-	<div class="two">
+	<div class="table">
 		<h2>Recruitments</h2>
 		<% if @recruitments.count > 0%>
 			<table>

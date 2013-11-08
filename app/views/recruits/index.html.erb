@@ -8,9 +8,10 @@
 	</div>
 
 	<div class="two">
+		
 		<br>
 		
-		<p><%= link_to "+ Add new recruit", new_recruit_path %></p>
+		<p class="add"><%= link_to "+ Add new recruit", new_recruit_path, class: "add" %></p>
 		
 		<br>
 		
@@ -18,6 +19,8 @@
 			<tr>
 				<th>Last Name</th>
 				<th>First Name</th>
+				<th>Middle Initial</th>
+				<th>Sex</th>
 				<th>Date of Birth</th>
 				<th>Medical Record Number</th>
 			</tr>
@@ -25,7 +28,9 @@
 			<% @recruits.order("last_name").each do |recruit| %>
 				<tr>
 					<td class="string"><%= link_to recruit.last_name, recruit_path(recruit.id) %></td>
-					<td class="string"><%= link_to recruit.first_name, recruit_path(recruit.id) %></td>
+					<td class="string"><%= link_to recruit.first_name, recruit_path(recruit.id) %></td>					
+					<td class="string"><%= link_to recruit.middle_initial, recruit_path(recruit.id) %></td>					
+					<td class="string"><%= recruit.sex %></td>
 					<td><%= link_to "#{recruit.date_of_birth}", recruit_path(recruit.id) %></td>
 					<td><%= link_to "#{recruit.medical_record_number}", recruit_path(recruit.id) %></td>
 				</tr>
@@ -34,5 +39,6 @@
 
 		<br>
 		<br>
+
 	</div>
 </div>

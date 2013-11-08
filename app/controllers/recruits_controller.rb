@@ -8,7 +8,7 @@ class RecruitsController < ApplicationController
   end
 
   def create
-  	@recruit = Recruit.new(params.require(:recruit).permit(:first_name, :last_name, :medical_record_number, :date_of_birth, :middle_initial))
+  	@recruit = Recruit.new(params.require(:recruit).permit(:first_name, :last_name, :medical_record_number, :date_of_birth, :middle_initial, :sex))
 
   	if @recruit.save
   		redirect_to @recruit
@@ -33,7 +33,7 @@ class RecruitsController < ApplicationController
   end
 
   def update
-  	@recruit.update_attributes(params.require(:recruit).permit(:first_name, :last_name, :medical_record_number, :date_of_birth, :middle_initial))
+  	@recruit.update_attributes(params.require(:recruit).permit(:first_name, :last_name, :medical_record_number, :date_of_birth, :middle_initial, :sex))
   	redirect_to @recruit
   end
 

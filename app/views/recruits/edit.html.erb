@@ -1,35 +1,47 @@
-<h1>Edit Profile</h1>
-
-<%= form_for @recruit do |form| %>
-  <p>
-    <%= form.label :first_name, "First name:" %>
-    <%= form.text_field :first_name %>
-  </p>
-
-  <p>
-    <%= form.label :middle_initial, "Middle initial(s):" %>
-    <%= form.text_field :middle_initial %>
-  </p> 
+<div id="container">
   
-  <p>
-    <%= form.label :last_name, "Last name:" %>
-    <%= form.text_field :last_name %>
-  </p>
+  <div class="nav">
+    <p><%= link_to "Home", recruits_path %></p>
+  </div>
 
-  <p>  
-    <%= form.label :medical_record_number, "MRN:" %>
-    <%= form.text_field :medical_record_number %>
-  </p>  
+  <div class="one">
+    <h1>Edit Profile</h1>
+  </div>
   
-  <p>
-    <%= form.label :date_of_birth, "Date of birth:" %>
-    <%= form.date_field :date_of_birth %>
-  </p>
+  <div class="two">
 
-  <p>
-    <%= form.label :sex, "Sex:" %>
-    <%= form.select(:sex, options_for_select(@sex_options)) %>
-  </p>
+    <%= form_for @recruit do |form| %>
+      <p>
+        <%= form.label :first_name, "First name:" %>
+        <%= form.text_field :first_name %>
+      </p>
 
-  <p><%= form.submit "Update" %></p>
-<% end %>
+      <p>
+        <%= form.label :middle_initial, "Middle initial(s):" %>
+        <%= form.text_field :middle_initial %>
+      </p> 
+      
+      <p>
+        <%= form.label :last_name, "Last name:" %>
+        <%= form.text_field :last_name %>
+      </p>
+
+      <p>  
+        <%= form.label :medical_record_number, "MRN:" %>
+        <%= form.text_field :medical_record_number %>
+      </p>  
+      
+      <p>
+        <%= form.label :date_of_birth, "Date of birth:" %>
+        <%= form.date_field :date_of_birth %>
+      </p>
+
+      <p>
+        <%= form.label :sex, "Sex:" %>
+        <%= form.select(:sex, options_for_select(@sex_options)) %>
+      </p>
+
+      <p><%= form.submit "Update" %></p>
+    <% end %>
+  </div>
+</div>
