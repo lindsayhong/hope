@@ -1,6 +1,6 @@
 class InterventionsController < ApplicationController
 	before_filter :authenticate_user!
-  before_filter :find_recruitment, only: [:new, :create, :edit, :update, :show]
+  before_filter :find_recruitment, only: [:new, :create, :edit, :update]
   before_filter :find_intervention, only: [:show, :edit, :update]
   before_filter :form_options, only: [:new, :edit]
   
@@ -10,6 +10,7 @@ class InterventionsController < ApplicationController
 
   def summary
     @hilo_30_recruitments = Recruitment.where(group: "Hilo 30-Day")
+    @interventions = Intervention.all
   end
 
   def new
@@ -27,6 +28,7 @@ class InterventionsController < ApplicationController
   end
 
   def show
+    @recruitment = Recruitment.find(@intervention.recruitment_id)
     @recruit = Recruit.find(@recruitment.recruit_id)
     @hospital_visits = HospitalVisit.where(intervention_id: @intervention)
     @er_visits = ErVisit.where(intervention_id: @intervention)

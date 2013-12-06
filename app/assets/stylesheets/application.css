@@ -13,12 +13,7 @@
  */
 
 a:link {
-	color: gray;
-	text-decoration: none;
-}
-
-a:link.nav {
-	color: white;
+	color: #413D3D;
 	text-decoration: none;
 }
 
@@ -27,11 +22,21 @@ a:hover {
 }
 
 a:visited {
-	color: gray;
+	color: #413D3D;
 	text-decoration: none;
 }
 
-a:visited.nav {
+a:link.nav-selected {
+	color: black;
+	text-decoration: underline;
+}
+
+a:visited.nav-selected {
+	color: black;
+	text-decoration: underline;
+}
+
+a:link.nav {
 	color: white;
 	text-decoration: none;
 }
@@ -41,12 +46,17 @@ a:hover.nav {
 	text-decoration: underline;
 }
 
-a.edit {
+a:link.edit {
 	color: black;
 	background-color: white;
 	;
 	padding: 8px;
+	border-style: groove;
 	border-radius: 5px;
+}
+
+a:visited.edit {
+	border-style: groove;
 }
 
 a:hover.edit {
@@ -61,7 +71,17 @@ a.add {
 	;
 	padding: 10px;
 	border-radius: 5px;
-	border: solid gray;
+	border-style: groove;
+	font-weight: bold;
+}
+
+a:visited.add {
+	color: black;
+	background-color: lightgray;
+	;
+	padding: 10px;
+	border-radius: 5px;
+	border-style: groove;
 	font-weight: bold;
 }
 
@@ -164,4 +184,11 @@ table.recruitment {
 	padding: 1px;
 }
 
+ul.nav {
+	list-style: none;
+}
 
+ul.nav li {
+	display: inline;
+	margin-right: 40px;
+}

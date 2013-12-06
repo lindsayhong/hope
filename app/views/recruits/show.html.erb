@@ -1,6 +1,10 @@
 <div id="container">
 	<div class="nav">
-		<p><%= link_to "Home", recruits_path %></p>
+		<ul class="nav">
+			<li><%= link_to "Summary", '/interventions/summary', class: "nav" %></li>
+			<li><%= link_to "Patient List", recruits_path, class: "nav" %></li>
+			<li><%= link_to "Recruitments", recruitments_path, class: "nav"  %></li>
+		</ul>
 	</div>
 
 	<div class="one">
@@ -10,11 +14,11 @@
 	<div class="two">
 		<h2><u>Name</u>: <%= "#{@recruit.last_name}, #{@recruit.first_name} #{@recruit.middle_initial}" %></h2>
 
-		<h3><u>Date of birth</u>: <%= @recruit.date_of_birth.strftime("%B %-d, %Y") %></h3>		
+		<h3><u>Date of birth</u>: <%= @recruit.date_of_birth.try(:strftime, "%B %-d, %Y") %></h3>		
 
 		<h3><u>Sex</u>: <%= @recruit.sex %></h3>
 
-		<h3 class="underline"><%= "Age as of today: #{current_age(@recruit.date_of_birth)}" %></h3>
+		<h3 class="underline">Age at time of recruitment</h3>
 
 		<h3><u><%= "Medical Record Number"%></u><%= ": #{@recruit.medical_record_number}" %></h3>
 
@@ -43,12 +47,14 @@
 			</table>
 		<% end %>
 
-		<h3><%= link_to "+ Add recruitment", new_recruit_recruitment_path(params[:id]) %></h3>
+		<br>
+		
+		<h3><%= link_to "+ Add recruitment", new_recruit_recruitment_path(params[:id]), class: "add" %></h3>
 
 		<br>
 		<br>
 
-		<% if @interventions.count > 0 %>
+		<% if @recruit.interventions.count > 0 %>
 			<h2>Interventions</h2>
 			<table>
 				<tr>
@@ -63,10 +69,10 @@
 					<th>Update</th>
 				</tr>
 
-				<% @interventions.each do |intervention| %>
+				<% @recruit.interventions.each do |intervention| %>
 					<tr>
 						<td><%= link_to intervention.id, recruitment_intervention_path(intervention.recruitment_id, intervention.id) %></td>
-						<td><%= Recruitment.find(intervention.recruitment_id).group %></td>
+						<td><%= find_recruit_recruitment(intervention.recruitment_id).group %></td>
 						<td><%= intervention.nurse %></td>
 						<td><%= intervention.intervention_start_date %></td>
 						<td><%= intervention.intervention_end_date %></td>

@@ -23,7 +23,7 @@ class RecruitsController < ApplicationController
 
   def show
     @recruitments = Recruitment.where(recruit_id: @recruit.id)
-    @interventions = Intervention.where(recruit_id: @recruit.id)
+    @interventions = Intervention.all
     @current_date = Date.today
     @hospital_visits = HospitalVisit.all
     @er_visits = ErVisit.all
@@ -49,5 +49,4 @@ class RecruitsController < ApplicationController
   def sex_options
     @sex_options = ["Male", "Female"]
   end
-
 end

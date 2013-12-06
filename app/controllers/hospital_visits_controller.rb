@@ -1,7 +1,7 @@
 class HospitalVisitsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_intervention, only: [:new, :create, :edit, :update, :show]
-  before_filter :find_recruitment, only: [:edit, :update]
+  before_filter :find_intervention, only: [:new, :create, :edit, :update, :destroy, :show]
+  before_filter :find_recruitment, only: [:edit, :update, :destroy]
   # after_save :calculate_duration
 
   def new
@@ -16,6 +16,12 @@ class HospitalVisitsController < ApplicationController
     else
         render action: new
     end
+  end
+
+  def destroy
+    @hospital_visit = HospitalVisit.find(params[:id])
+    @hospital_visit.destroy
+    redirect_to recruitment_intervention_path(@intervention.recruitment_id, @intervention)
   end
 
   def edit

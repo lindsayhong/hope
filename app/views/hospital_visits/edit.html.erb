@@ -1,4 +1,7 @@
-<h1>Update Hospital Visit</h1>
+
+<div class="one">
+  <h1>Update Hospital Visit</h1>
+</div>
 
 <br>
 
@@ -31,4 +34,10 @@
   <p><%= form.submit "Update" %></p>
 <% end %>
 
-<p><%= link_to "Cancel", recruitment_intervention_path(@recruitment, @intervention) %>
+<div style=width:150px>
+  <div style=float:left><p><%= link_to "Cancel", recruitment_intervention_path(@recruitment, @intervention), class: "edit" %></p></div>
+
+  <div style=float:left><br></div>
+
+  <div style=float:right><p><%= link_to "Delete", intervention_hospital_visit_path(@intervention, @hospital_visit), class: "edit", method: :delete, data: { confirm: "Are you sure you want to delete this Hospital Visit?"} %></p></div>
+</div>

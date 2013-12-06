@@ -1,2 +1,25 @@
-<h1>Recruitments#index</h1>
-<p>Find me in app/views/recruitments/index.html.erb</p>
+<div id="container">
+	<div class="nav">
+		<ul class="nav">
+			<li><%= link_to "Summary", 'interventions/summary', class: "nav" %></li>
+			<li><%= link_to "Patient List", recruits_path, class: "nav" %></li>
+			<li><%= link_to "Recruitments", recruitments_path, class: "nav-selected"  %></li>
+		</ul>
+	</div>
+
+	<div class="one">
+		<h1>Recruits</h1>
+	</div>
+
+	<div class="two">
+
+		<h1>All Recruitments</h1>
+		<% @recruitments.each do |recruitment|  %>
+			<ul>
+				<li><%= link_to recruitment.review_date, recruit_recruitment_path(recruitment.recruit_id, recruitment) %></li>
+				<li><%= link_to Recruit.find(recruitment.recruit_id).first_name, recruit_recruitment_path(recruitment.recruit_id, recruitment) %></li>
+			</ul>
+		<% end %>
+	</div>
+
+</div>

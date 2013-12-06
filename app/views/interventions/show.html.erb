@@ -1,6 +1,10 @@
 <div id="container">
 	<div class="nav">
-		<h5><%= link_to "Home", recruits_path, class: "nav" %></h5>
+		<ul class="nav">
+			<li><%= link_to "Summary", '/interventions/summary', class: "nav" %></li>
+			<li><%= link_to "Patient List", recruits_path, class: "nav" %></li>
+			<li><%= link_to "Recruitments", recruitments_path, class: "nav"  %></li>
+		</ul>
 	</div>
 
 	<div class="one">
@@ -16,7 +20,7 @@
 	<div class="two">
 		<h4>Intervention Start Date: <%= @intervention.intervention_start_date %></h4>
 		<h4>Intervention End Date: <%= @intervention.intervention_end_date %></h4>
-		<h4><%= link_to "Update", edit_recruitment_intervention_path(@recruitment, @intervention) %></h4>
+		<p><%= link_to "Update", edit_recruitment_intervention_path(@recruitment, @intervention), class: "edit" %></p>
 	</div>
 	
 	<br>
@@ -60,8 +64,10 @@
 		<br>
 
 		<table>
-			<tr>ER Visits</tr>
-
+			<tr>
+				<th colspan="7">ER Visits</th>
+			</tr>
+			
 			<tr>
 				<th class="er">#</th>
 				<th class="er">ER Visit Date</th>

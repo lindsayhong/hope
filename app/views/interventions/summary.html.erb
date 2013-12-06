@@ -1,6 +1,10 @@
 <div id="container">
 	<div class="nav">
-		<h5><%= link_to "Home", recruits_path, class: "nav" %></h5>
+		<ul class="nav">
+			<li><%= link_to "Summary", 'summary', class: "nav-selected" %></li>
+			<li><%= link_to "Patient List", recruits_path, class: "nav" %></li>
+			<li><%= link_to "Recruitments", recruitments_path, class: "nav"  %></li>
+		</ul>
 	</div>
 
 	<div class="one">
@@ -9,12 +13,12 @@
 
 	<div class="two">
 		<h3>Hilo 30-Day Intervention Summary</h3>
-			<% @hilo_30_recruitments.each do |hilo_30_recruitment| %>
-					<ul>
-						<li><%= Intervention.where(recruitment_id: hilo_30_recruitment.id).first %></li>
-					</ul>
-			
-
+			<% @interventions.each do |intervention| %>
+				<% if Recruitment.find(intervention.recruitment_id).group = "Hilo 30-Day" %>
+						<ul>
+							<li><%= intervention.outcome %></li>
+						</ul>
+				<% end %>
 			<% end %>
 
 

@@ -1,6 +1,10 @@
 <div id="container">
 	<div class="nav">
-		<h5><%= link_to "Home", recruits_path, class: "nav" %></h5>
+		<ul class="nav">
+			<li><%= link_to "Summary", 'interventions/summary', class: "nav" %></li>
+			<li><%= link_to "Patient List", recruits_path, class: "nav-selected" %></li>
+			<li><%= link_to "Recruitments", recruitments_path, class: "nav"  %></li>
+		</ul>
 	</div>
 
 	<div class="one">
@@ -11,7 +15,7 @@
 		
 		<br>
 		
-		<p class="add"><%= link_to "+ Add new recruit", new_recruit_path, class: "add" %></p>
+		<p><%= link_to "+ Add new recruit", new_recruit_path, class: "add" %></p>
 		
 		<br>
 		

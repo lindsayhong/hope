@@ -1,6 +1,10 @@
 <div id="container">
   <div class="nav">
-    <p><%= link_to "Home", recruits_path %></p>
+    <ul class="nav">
+      <li><%= link_to "Summary", 'summary', class: "nav-selected" %></li>
+      <li><%= link_to "Patient List", recruits_path, class: "nav" %></li>
+      <li><%= link_to "Recruitments", recruitments_path, class: "nav"  %></li>
+    </ul>
   </div>
 
   <div class="one">
